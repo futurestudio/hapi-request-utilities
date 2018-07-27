@@ -6,7 +6,7 @@ const Hapi = require('hapi')
 
 let server
 
-const { experiment, test, beforeEach } = (exports.lab = Lab.script())
+const { experiment, it, beforeEach } = (exports.lab = Lab.script())
 const expect = Code.expect
 
 experiment('hapi-dev-error register plugin', () => {
@@ -19,7 +19,7 @@ experiment('hapi-dev-error register plugin', () => {
     })
   })
 
-  test('request.all decoration', async () => {
+  it('request.all decoration', async () => {
     server.route({
       path: '/',
       method: 'POST',
@@ -46,7 +46,7 @@ experiment('hapi-dev-error register plugin', () => {
     })
   })
 
-  test('request.only decoration', async () => {
+  it('request.only decoration', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -67,7 +67,7 @@ experiment('hapi-dev-error register plugin', () => {
     expect(payload.name).to.equal('marcus')
   })
 
-  test('request.header decoration', async () => {
+  it('request.header decoration', async () => {
     server.route({
       path: '/',
       method: 'GET',

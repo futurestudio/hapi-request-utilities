@@ -2,8 +2,36 @@
   hapi-request-utilities
 </p>
 
-## Tbc.
-Soon :)
+## Introduction
+A hapi plugin that decorates the `request` with methods to quickly and conveniently access incoming data.
+
+
+### Requirements
+This plugin uses async/await which requires **Node.js v8 or newer**.
+
+
+## Installation
+Add `hapi-request-utilities` as a dependency to your project:
+
+```bash
+# NPM 5: this way is yours
+npm i hapi-request-utilities
+
+# NPM 4:
+npm i -S hapi-request-utilities
+```
+
+
+## Usage
+Register `hapi-request-utilities` to your hapi server and that's it :)
+
+```js
+await server.register({
+  plugin: require('hapi-request-utilities')
+})
+
+// went smooth like chocolate :)
+```
 
 
 ## Methods

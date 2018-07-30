@@ -124,7 +124,7 @@ const cookies = request.cookies()
 
 #### request.hasCookie()
 Returns a boolean value indicating whether the selected cookie is present on the request.
-   
+
 ```js
 const hasUserId = request.hasCookie('userId')
 ```

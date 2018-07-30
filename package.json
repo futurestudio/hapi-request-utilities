@@ -6,29 +6,8 @@
   "bugs": {
     "url": "https://github.com/fs-opensource/hapi-request-utilities/issues"
   },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "homepage": "https://github.com/fs-opensource/hapi-request-utilities#readme",
-  "keywords": [
-    "hapi",
-    "hapijs",
-    "hapi.js",
-    "plugin",
-    "request",
-    "utilities",
-    "request utilities",
-    "hapi request utilities"
-  ],
-  "license": "MIT",
-  "main": "lib/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fs-opensource/hapi-request-utilities.git"
-  },
-  "scripts": {
-    "test": "lab --assert code --leaks --coverage --lint",
-    "prepush": "npm test"
+  "dependencies": {
+    "lodash": "~4.17.10"
   },
   "devDependencies": {
     "code": "~5.2.0",
@@ -40,10 +19,31 @@
     "eslint-plugin-standard": "~3.1.0",
     "hapi": "~17.5.2",
     "hoek": "~5.0.3",
+    "husky": "~0.14.3",
     "lab": "~15.5.0"
   },
-  "dependencies": {
-    "husky": "~0.14.3",
-    "lodash": "~4.17.10"
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "homepage": "https://github.com/fs-opensource/hapi-request-utilities#readme",
+  "keywords": [
+    "hapi",
+    "hapi request utilities",
+    "hapi.js",
+    "hapijs",
+    "plugin",
+    "request",
+    "request utilities",
+    "utilities"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fs-opensource/hapi-request-utilities.git"
+  },
+  "scripts": {
+    "prepush": "npm test",
+    "test": "lab --assert code --leaks --coverage --lint"
   }
 }

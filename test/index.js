@@ -9,7 +9,7 @@ let server
 const { experiment, it, beforeEach } = (exports.lab = Lab.script())
 const expect = Code.expect
 
-experiment('hapi-dev-error register plugin', () => {
+experiment('hapi-request-utilities plugin', () => {
   beforeEach(async () => {
     server = new Hapi.Server()
     await server.initialize()

@@ -1,6 +1,6 @@
 {
   "name": "hapi-request-utilities",
-  "description": "",
+  "description": "hapi request decorations to conveniently access request data",
   "version": "1.0.0",
   "author": "Future Studio <info@futurestud.io>",
   "bugs": {
@@ -14,7 +14,11 @@
     "hapi",
     "hapijs",
     "hapi.js",
-    "plugin"
+    "plugin",
+    "request",
+    "utilities",
+    "request utilities",
+    "hapi request utilities"
   ],
   "license": "MIT",
   "main": "lib/index.js",

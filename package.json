@@ -6,6 +6,20 @@
   "bugs": {
     "url": "https://github.com/fs-opensource/hapi-request-utilities/issues"
   },
+  "contributors": [
+    {
+      "name": "Marcus Poehls",
+      "email": "marcus@futurestud.io"
+    },
+    {
+      "name": "Norman Peitek",
+      "email": "norman@futurestud.io"
+    },
+    {
+      "name": "Christian Fellner",
+      "email": "christian@futurestud.io"
+    }
+  ],
   "dependencies": {
     "lodash": "~4.17.10"
   },

@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-### [1.0.2](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.1...v1.0.2) - 2018-07-30
+### [1.0.2](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.1...v1.0.2) - 2018-08-02
 - add contributors
 - update readme
 

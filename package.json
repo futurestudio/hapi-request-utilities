@@ -1,7 +1,7 @@
 {
   "name": "hapi-request-utilities",
   "description": "hapi request decorations to conveniently access request data",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Future Studio <info@futurestud.io>",
   "bugs": {
     "url": "https://github.com/fs-opensource/hapi-request-utilities/issues"

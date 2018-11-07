@@ -8,6 +8,7 @@
 ### Updated
 - Readme: add logo
 - Run tests for Node versions 8, 10, and 11
+- Dependencies
 
 
 ## [1.0.3](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.2...v1.0.3) - 2018-08-21

@@ -1,6 +1,5 @@
 <div align="center">
-  hapi-request-utilities
-
+  <img width="471" style="max-width:100%;" src="https://github.com/fs-opensource/hapi-request-utilities/blob/master/media/hapi-request-utilities.png?raw=true" alt="hapi-request-utilities logo">
   <br/>
   <br/>
   <p>
@@ -15,7 +14,7 @@
   <br/>
   <br/>
   <p>
-  
+
   [![Build Status](https://travis-ci.org/fs-opensource/hapi-request-utilities.svg?branch=master)](https://travis-ci.org/fs-opensource/hapi-request-utilities)
   <a href="https://snyk.io/test/github/fs-opensource/hapi-request-utilities"><img src="https://snyk.io/test/github/fs-opensource/hapi-request-utilities/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/fs-opensource/hapi-request-utilities" style="max-width:100%;"></a>
     <a href="https://www.npmjs.com/package/hapi-request-utilities"><img src="https://img.shields.io/npm/v/hapi-request-utilities.svg" alt="hapi-request-utilities Version" data-canonical-src="https://img.shields.io/npm/v/hapi-request-utilities.svg" style="max-width:100%;"></a>
@@ -81,10 +80,12 @@ If a key is present in all three inputs, the query parameter is prioritized over
 Returns an object containing only the selected `keys` from the request payload, path and query parameters.
 
 ```js
-const data = request.only(['email', 'password'])
+const credentials = request.only(['email', 'password'])
+// or
+const { email, password } = request.only(['email', 'password'])
 
 // alternative with single key
-const data = request.only('username')
+const username = request.only('username')
 ```
 
 
@@ -92,10 +93,10 @@ const data = request.only('username')
 Returns an object containing all attributes from the request payload, path and query parameters except the given `keys`.
 
 ```js
-const data = request.except(['token', 'password', 'secret'])
+const noSecrets = request.except(['token', 'password', 'secret'])
 
 // alternative with single key
-const data = request.except('token')
+const noToken = request.except('token')
 ```
 
 
@@ -111,7 +112,7 @@ const accept = request.header('accept')
 Returns a boolean value indicating whether the selected header is present on the request.
 
 ```js
-const accept = request.hasHeader('accept')
+const hasAccept = request.hasHeader('accept')
 ```
 
 

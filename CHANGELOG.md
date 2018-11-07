@@ -1,7 +1,5 @@
 # Changelog
 
-## [Unreleased]
-
 
 ## [1.0.4](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.3...v1.0.4) - 2018-11-07
 

@@ -424,4 +424,46 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.statusCode).to.equal(200)
     expect(JSON.parse(response.payload)).to.equal(false)
   })
+
+  it('test request decoration for a present request.bearerToken', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => request.bearerToken()
+    })
+
+    const request = {
+      url: '/',
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer 1234'
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+
+    const payload = JSON.parse(response.payload)
+    expect(payload).to.equal(1234)
+  })
+
+  it('test request decoration for unavailable request.bearerToken', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => request.bearerToken() || 'no-token'
+    })
+
+    const request = {
+      url: '/',
+      method: 'GET',
+      headers: {
+        'Authorization': 'API-Key 1234'
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.payload).to.equal('no-token')
+  })
 })

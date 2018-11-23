@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [1.1.0](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.4...v1.1.0) - 2018-11-23
+
+### Added
+- `bearerToken` method to get the bearer token from request headers
+
+### Updated
+- Doc blocks on methods: added param and return types
+- Dependencies
+
+
 ## [1.0.4](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.3...v1.0.4) - 2018-11-07
 
 ### Updated

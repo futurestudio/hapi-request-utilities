@@ -466,4 +466,65 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.statusCode).to.equal(200)
     expect(response.payload).to.equal('no-token')
   })
+
+  it('does not return the user credentials', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => request.user() || {}
+    })
+
+    const request = {
+      url: '/',
+      method: 'GET'
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(JSON.parse(response.payload)).to.equal({ })
+  })
+
+  it('has access to the user credentials in extension points after auth', async () => {
+    server.auth.scheme('succeeding', function (_, options) {
+      return {
+        authenticate (_, h) {
+          return h.authenticated({ credentials: options.user })
+        }
+      }
+    })
+
+    server.auth.strategy('marcus', 'succeeding', { user: { name: 'Marcus' } })
+
+    server.route({
+      path: '/',
+      method: 'GET',
+      options: {
+        auth: 'marcus',
+        handler: request => request.user() || {} }
+    })
+
+    server.ext('onPreAuth', (request, h) => {
+      expect(request.user()).to.be.null()
+      return h.continue
+    })
+
+    server.ext('onPostAuth', (request, h) => {
+      expect(request.user()).to.equal({ name: 'Marcus' })
+      return h.continue
+    })
+
+    server.ext('onPreResponse', (request, h) => {
+      expect(request.user()).to.equal({ name: 'Marcus' })
+      return h.continue
+    })
+
+    const request = {
+      url: '/',
+      method: 'GET'
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal({ name: 'Marcus' })
+  })
 })

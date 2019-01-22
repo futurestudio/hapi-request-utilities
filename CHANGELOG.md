@@ -1,7 +1,13 @@
 # Changelog
 
 
-## Version [1.1.1](https://github.com/fs-opensource/hapi-geo-locate/compare/v1.1.0...v1.1.1) - 2019-01-22
+## Version [1.2.0](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.1.1...v1.2.0) - 2019-01-xx
+
+### Added
+- `request.user()`: returns the authenticated request credentials. It's a shortcut for `request.auth.credentials`
+
+
+## Version [1.1.1](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.1.0...v1.1.1) - 2019-01-22
 
 ### Added
 - add Greenkeeper Badge to Readme

@@ -1,6 +1,17 @@
 # Changelog
 
 
+## Version [1.1.1](https://github.com/fs-opensource/hapi-geo-locate/compare/v1.1.0...v1.1.1) - 2019-01-22
+
+### Added
+- test plugin for hapi 18
+- add Greenkeeper Badge to Readme
+
+### Updated
+- Readme: link to detailed documentation in Boost docs
+- bump dependencies
+
+
 ## [1.1.0](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.4...v1.1.0) - 2018-11-23
 
 ### Added

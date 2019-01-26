@@ -4,7 +4,7 @@
   "version": "1.1.1",
   "author": "Future Studio <info@futurestud.io>",
   "bugs": {
-    "url": "https://github.com/fs-opensource/hapi-request-utilities/issues"
+    "url": "https://github.com/futurestudio/hapi-request-utilities/issues"
   },
   "contributors": [
     {
@@ -39,7 +39,7 @@
   "engines": {
     "node": ">=8"
   },
-  "homepage": "https://github.com/fs-opensource/hapi-request-utilities#readme",
+  "homepage": "https://github.com/futurestudio/hapi-request-utilities#readme",
   "keywords": [
     "hapi",
     "hapi request utilities",
@@ -54,7 +54,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fs-opensource/hapi-request-utilities.git"
+    "url": "git+https://github.com/futurestudio/hapi-request-utilities.git"
   },
   "scripts": {
     "prepush": "npm test",

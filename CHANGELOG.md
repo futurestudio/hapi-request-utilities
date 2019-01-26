@@ -1,13 +1,16 @@
 # Changelog
 
 
-## Version [1.2.0](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.1.1...v1.2.0) - 2019-01-xx
+## Version [1.2.0](https://github.com/futurestudio/hapi-request-utilities/compare/v1.1.1...v1.2.0) - 2019-01-26
 
 ### Added
 - `request.user()`: returns the authenticated request credentials. It's a shortcut for `request.auth.credentials`
 
+### Updated
+- Readme: rename GitHub references `futurestudio -> futurestudio`
 
-## Version [1.1.1](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.1.0...v1.1.1) - 2019-01-22
+
+## Version [1.1.1](https://github.com/futurestudio/hapi-request-utilities/compare/v1.1.0...v1.1.1) - 2019-01-22
 
 ### Added
 - add Greenkeeper Badge to Readme
@@ -18,7 +21,7 @@
 - bump dependencies
 
 
-## [1.1.0](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.4...v1.1.0) - 2018-11-23
+## [1.1.0](https://github.com/futurestudio/hapi-request-utilities/compare/v1.0.4...v1.1.0) - 2018-11-23
 
 ### Added
 - `bearerToken` method to get the bearer token from request headers
@@ -28,7 +31,7 @@
 - Dependencies
 
 
-## [1.0.4](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.3...v1.0.4) - 2018-11-07
+## [1.0.4](https://github.com/futurestudio/hapi-request-utilities/compare/v1.0.3...v1.0.4) - 2018-11-07
 
 ### Updated
 - Readme: add logo
@@ -36,20 +39,20 @@
 - Dependencies
 
 
-## [1.0.3](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.2...v1.0.3) - 2018-08-21
+## [1.0.3](https://github.com/futurestudio/hapi-request-utilities/compare/v1.0.2...v1.0.3) - 2018-08-21
 
 ### Updated
 - Readme: quick navigation and fix logo size on small screens
 
 
-### [1.0.2](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.1...v1.0.2) - 2018-08-02
+### [1.0.2](https://github.com/futurestudio/hapi-request-utilities/compare/v1.0.1...v1.0.2) - 2018-08-02
 
 ### Updated
 - add contributors
 - update readme
 
 
-### [1.0.1](https://github.com/fs-opensource/hapi-request-utilities/compare/v1.0.0...v1.0.1) - 2018-07-30
+### [1.0.1](https://github.com/futurestudio/hapi-request-utilities/compare/v1.0.0...v1.0.1) - 2018-07-30
 
 ### Updated
 - move `husky` to `devDependencies` (was accidentally installed in `dependencies`)

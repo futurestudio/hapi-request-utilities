@@ -215,7 +215,8 @@ experiment('hapi-request-utilities plugin', () => {
       url: '/',
       method: 'GET',
       payload: {
-        isHapiPassionate: true
+        name: 'Marcus',
+        developer: ''
       }
     }
 
@@ -246,7 +247,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal(true)
 
     request = {
-      url: '/',
+      url: '/?name=',
       method: 'GET',
       payload: {
         isHapiPassionate: true

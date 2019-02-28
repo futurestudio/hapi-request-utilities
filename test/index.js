@@ -122,6 +122,142 @@ experiment('hapi-request-utilities plugin', () => {
     expect(payload.name).to.equal('marcus')
   })
 
+  it('tests the request.has decoration', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => {
+        return request.has([ 'name', 'developer' ])
+      }
+    })
+
+    let request = {
+      url: '/?name=marcus&developer=hapi',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(true)
+
+    request = {
+      url: '/',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const { result, statusCode } = await server.inject(request)
+    expect(statusCode).to.equal(200)
+    expect(result).to.equal(false)
+  })
+
+  it('tests the request.has decoration with string as key (not array of strings)', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => {
+        return request.has('name')
+      }
+    })
+
+    let request = {
+      url: '/?name=marcus&developer=hapi',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(true)
+
+    request = {
+      url: '/',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const { result, statusCode } = await server.inject(request)
+    expect(statusCode).to.equal(200)
+    expect(result).to.equal(false)
+  })
+
+  it('tests the request.filled decoration', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => {
+        return request.filled([ 'name', 'developer' ])
+      }
+    })
+
+    let request = {
+      url: '/?name=marcus&developer=hapi',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(true)
+
+    request = {
+      url: '/',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const { result, statusCode } = await server.inject(request)
+    expect(statusCode).to.equal(200)
+    expect(result).to.equal(false)
+  })
+
+  it('tests the request.filled decoration with string as key (not array of strings)', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => {
+        return request.filled('name')
+      }
+    })
+
+    let request = {
+      url: '/?name=marcus&developer=hapi',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(true)
+
+    request = {
+      url: '/',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const { result, statusCode } = await server.inject(request)
+    expect(statusCode).to.equal(200)
+    expect(result).to.equal(false)
+  })
+
   it('tests the request.except decoration', async () => {
     server.route({
       path: '/',

@@ -1,6 +1,13 @@
 # Changelog
 
 
+## Version [1.3.0](https://github.com/futurestudio/hapi-request-utilities/compare/v1.2.1...v1.3.0) - 2019-02-28
+
+### Added
+- `request.has(keys)`: determine whether the request includes the given input `keys`
+- `request.filled(keys)`: determines whether the request includes a non-empty value for the input `keys`
+
+
 ## Version [1.2.1](https://github.com/futurestudio/hapi-request-utilities/compare/v1.2.0...v1.2.1) - 2019-02-18
 
 ### Updated

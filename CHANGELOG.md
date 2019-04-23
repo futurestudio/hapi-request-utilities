@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [2.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v1.3.0...v2.0.0) - 2019-04-24
+
+### Updated
+- `request.user` returns the authenticated credentials, was previously a function `request.user()`
+- updating to the scoped hapi dependencies
+- bump devDependencies
+
+
 ## [1.3.0](https://github.com/futurestudio/hapi-request-utilities/compare/v1.2.1...v1.3.0) - 2019-02-28
 
 ### Added

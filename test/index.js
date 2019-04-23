@@ -1,13 +1,12 @@
 'use strict'
 
-const Lab = require('lab')
-const Code = require('code')
-const Hapi = require('hapi')
+const Lab = require('@hapi/lab')
+const Hapi = require('@hapi/hapi')
+const { expect } = require('@hapi/code')
 
 let server
 
 const { experiment, it, beforeEach } = (exports.lab = Lab.script())
-const expect = Code.expect
 
 experiment('hapi-request-utilities plugin', () => {
   beforeEach(async () => {
@@ -608,7 +607,7 @@ experiment('hapi-request-utilities plugin', () => {
     server.route({
       path: '/',
       method: 'GET',
-      handler: request => request.user() || {}
+      handler: request => request.user || {}
     })
 
     const request = {
@@ -630,34 +629,31 @@ experiment('hapi-request-utilities plugin', () => {
       }
     })
 
-    server.auth.strategy('marcus', 'succeeding', { user: { name: 'Marcus' } })
+    server.auth.strategy('marcus', 'succeeding')
 
     server.route({
       path: '/',
       method: 'GET',
       options: {
         auth: 'marcus',
-        handler: request => request.user() || {} }
-    })
-
-    server.ext('onPreAuth', (request, h) => {
-      expect(request.user()).to.be.null()
-      return h.continue
+        handler: request => request.user || {}
+      }
     })
 
     server.ext('onPostAuth', (request, h) => {
-      expect(request.user()).to.equal({ name: 'Marcus' })
+      expect(request.user).to.equal({ name: 'Marcus' })
       return h.continue
     })
 
     server.ext('onPreResponse', (request, h) => {
-      expect(request.user()).to.equal({ name: 'Marcus' })
+      expect(request.user).to.equal({ name: 'Marcus' })
       return h.continue
     })
 
     const request = {
       url: '/',
-      method: 'GET'
+      method: 'GET',
+      auth: { credentials: { name: 'Marcus' }, strategy: 'marcus' }
     }
 
     const response = await server.inject(request)

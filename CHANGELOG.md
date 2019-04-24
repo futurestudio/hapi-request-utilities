@@ -6,7 +6,7 @@
 ### Updated
 - `request.user` returns the authenticated credentials, was previously a function `request.user()`
 - updating to the scoped hapi dependencies
-- bump devDependencies
+- bump dependencies
 
 
 ## [1.3.0](https://github.com/futurestudio/hapi-request-utilities/compare/v1.2.1...v1.3.0) - 2019-02-28

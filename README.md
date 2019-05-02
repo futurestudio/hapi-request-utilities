@@ -67,7 +67,7 @@ await server.register({
 
 
 ## Methods
-Find all available `request` decorations in [Boost’s request utilities docs](https://boost.futurestud.io/docs/master/request-utilities).
+Find all available `request` decorations in [the extensive documentation](https://superchargejs.com/docs/master/request).
 
 
 

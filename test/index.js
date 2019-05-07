@@ -16,6 +16,16 @@ experiment('hapi-request-utilities plugin', () => {
     await server.register({
       plugin: require('../lib/index')
     })
+
+    server.auth.scheme('succeeding', function (_, options) {
+      return {
+        authenticate (_, h) {
+          return h.authenticated({ credentials: options.user })
+        }
+      }
+    })
+
+    server.auth.strategy('marcus', 'succeeding')
   })
 
   it('tests the request.all decoration', async () => {
@@ -621,16 +631,6 @@ experiment('hapi-request-utilities plugin', () => {
   })
 
   it('has access to the user credentials in extension points after auth', async () => {
-    server.auth.scheme('succeeding', function (_, options) {
-      return {
-        authenticate (_, h) {
-          return h.authenticated({ credentials: options.user })
-        }
-      }
-    })
-
-    server.auth.strategy('marcus', 'succeeding')
-
     server.route({
       path: '/',
       method: 'GET',
@@ -659,5 +659,40 @@ experiment('hapi-request-utilities plugin', () => {
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
     expect(response.result).to.equal({ name: 'Marcus' })
+  })
+
+  it('tests the request.isAuthenticated() decoration', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      options: {
+        auth: {
+          strategy: 'marcus',
+          mode: 'try'
+        },
+        handler: request => {
+          return request.isAuthenticated()
+        }
+      }
+    })
+
+    const unauthenticatedRequest = {
+      url: '/',
+      method: 'GET'
+    }
+
+    let response = await server.inject(unauthenticatedRequest)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(false)
+
+    const authenticatedRequest = {
+      url: '/',
+      method: 'GET',
+      auth: { credentials: { name: 'Marcus' }, strategy: 'default' }
+    }
+
+    response = await server.inject(authenticatedRequest)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(true)
   })
 })

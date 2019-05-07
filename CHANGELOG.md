@@ -8,6 +8,9 @@
   - `true`: successfully authenticated the request via an auth strategy
   - `false`: unauthenticated request that hasn't passed an auth strategy
 
+### Updated
+- bump dependencies
+
 
 ## [2.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v1.3.0...v2.0.0) - 2019-04-24
 

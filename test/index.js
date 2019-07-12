@@ -136,7 +136,7 @@ experiment('hapi-request-utilities plugin', () => {
       path: '/',
       method: 'GET',
       handler: request => {
-        return request.has([ 'name', 'developer' ])
+        return request.has(['name', 'developer'])
       }
     })
 
@@ -204,7 +204,7 @@ experiment('hapi-request-utilities plugin', () => {
       path: '/',
       method: 'GET',
       handler: request => {
-        return request.filled([ 'name', 'developer' ])
+        return request.filled(['name', 'developer'])
       }
     })
 
@@ -421,7 +421,7 @@ experiment('hapi-request-utilities plugin', () => {
       url: '/',
       method: 'GET',
       headers: {
-        'accept': 'application/json'
+        accept: 'application/json'
       }
     }
 
@@ -453,7 +453,7 @@ experiment('hapi-request-utilities plugin', () => {
       url: '/',
       method: 'GET',
       headers: {
-        'accept': 'text/html'
+        accept: 'text/html'
       }
     }
 
@@ -582,7 +582,7 @@ experiment('hapi-request-utilities plugin', () => {
       url: '/',
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer 1234'
+        Authorization: 'Bearer 1234'
       }
     }
 
@@ -604,7 +604,7 @@ experiment('hapi-request-utilities plugin', () => {
       url: '/',
       method: 'GET',
       headers: {
-        'Authorization': 'API-Key 1234'
+        Authorization: 'API-Key 1234'
       }
     }
 

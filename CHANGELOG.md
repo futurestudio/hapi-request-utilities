@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [2.1.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.0.0...v2.1.0) - 2019-05-07
+## [2.1.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.0.0...v2.1.0) - 2019-07-29
 
 ### Added
 - `request.input('key')` to retrieve an input item from the `request`

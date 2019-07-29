@@ -7,6 +7,7 @@
 - `request.isAuthenticated()` is a shortcut for `request.auth.isAuthenticated`. It returns a boolean whether the request is authenticated:
   - `true`: successfully authenticated the request via an auth strategy
   - `false`: unauthenticated request that hasn't passed an auth strategy
+- `request.input('key')` to retrieve an input item from the `request`
 
 ### Updated
 - bump dependencies

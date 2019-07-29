@@ -47,9 +47,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-
-    const payload = JSON.parse(response.payload)
-    expect(payload).to.equal({
+    expect(response.result).to.equal({
       name: 'marcus',
       isHapiPassionate: 'oh-yeah'
     })
@@ -75,9 +73,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-
-    const payload = JSON.parse(response.payload)
-    expect(payload).to.equal({
+    expect(response.result).to.equal({
       name: 'marcus',
       isHapiPassionate: 'oh-yeah'
     })
@@ -102,9 +98,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-
-    const payload = JSON.parse(response.payload)
-    expect(payload.name).to.equal('marcus')
+    expect(response.result.name).to.equal('marcus')
   })
 
   it('tests the request.only decoration with string as key (not array of strings)', async () => {
@@ -126,9 +120,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-
-    const payload = JSON.parse(response.payload)
-    expect(payload.name).to.equal('marcus')
+    expect(response.result.name).to.equal('marcus')
   })
 
   it('tests the request.has decoration', async () => {
@@ -287,9 +279,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-
-    const payload = JSON.parse(response.payload)
-    expect(payload).to.equal({
+    expect(response.result).to.equal({
       developer: 'hapi',
       isHapiPassionate: true
     })
@@ -314,9 +304,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-
-    const payload = JSON.parse(response.payload)
-    expect(payload).to.equal({
+    expect(response.result).to.equal({
       name: 'marcus',
       developer: 'hapi'
     })
@@ -363,7 +351,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     let response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(true)
+    expect(response.result).to.equal(true)
 
     request = {
       url: '/',
@@ -373,7 +361,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(false)
+    expect(response.result).to.equal(false)
   })
 
   it('test the request.isJson decoration', async () => {
@@ -395,7 +383,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     let response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(true)
+    expect(response.result).to.equal(true)
 
     request = {
       url: '/',
@@ -405,7 +393,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(false)
+    expect(response.result).to.equal(false)
   })
 
   it('test the request.wantsJson decoration', async () => {
@@ -427,7 +415,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     let response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(true)
+    expect(response.result).to.equal(true)
 
     request = {
       url: '/',
@@ -437,7 +425,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(false)
+    expect(response.result).to.equal(false)
   })
 
   it('test the request.wantsHtml decoration', async () => {
@@ -459,7 +447,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     let response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(true)
+    expect(response.result).to.equal(true)
 
     request = {
       url: '/',
@@ -469,7 +457,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(false)
+    expect(response.result).to.equal(false)
   })
 
   it('test the request.cookie decoration', async () => {
@@ -523,7 +511,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     let response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal({
+    expect(response.result).to.equal({
       name: 'Marcus',
       token: '123'
     })
@@ -536,7 +524,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal({})
+    expect(response.result).to.equal({})
   })
 
   it('test the request.hasCookie decoration', async () => {
@@ -558,7 +546,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     let response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(true)
+    expect(response.result).to.equal(true)
 
     request = {
       url: '/',
@@ -568,7 +556,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal(false)
+    expect(response.result).to.equal(false)
   })
 
   it('test request decoration for a present request.bearerToken', async () => {
@@ -588,9 +576,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-
-    const payload = JSON.parse(response.payload)
-    expect(payload).to.equal(1234)
+    expect(response.result).to.equal('1234')
   })
 
   it('test request decoration for unavailable request.bearerToken', async () => {
@@ -627,7 +613,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(JSON.parse(response.payload)).to.equal({ })
+    expect(response.result).to.equal({ })
   })
 
   it('has access to the user credentials in extension points after auth', async () => {
@@ -694,5 +680,25 @@ experiment('hapi-request-utilities plugin', () => {
     response = await server.inject(authenticatedRequest)
     expect(response.statusCode).to.equal(200)
     expect(response.result).to.equal(true)
+  })
+
+  it('request.input', async () => {
+    server.route({
+      path: '/',
+      method: 'POST',
+      handler: request => request.input('_token') || '54321'
+    })
+
+    const request = {
+      url: '/',
+      method: 'POST',
+      payload: {
+        _token: '12345'
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal('12345')
   })
 })

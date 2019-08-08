@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [2.1.1](https://github.com/futurestudio/hapi-request-utilities/compare/v2.1.0...v2.1.1) - 2019-08-08
+
+### Fixed
+- `request.user` stores the authenticated credentials
+
+
 ## [2.1.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.0.0...v2.1.0) - 2019-07-29
 
 ### Added

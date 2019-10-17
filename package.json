@@ -2,16 +2,10 @@
   "name": "hapi-request-utilities",
   "description": "hapi request decorations to conveniently access request data",
   "version": "2.1.2",
-  "author": "Future Studio <info@futurestud.io>",
+  "author": "Marcus Pöhls <marcus@futurestud.io>",
   "bugs": {
     "url": "https://github.com/futurestudio/hapi-request-utilities/issues"
   },
-  "contributors": [
-    {
-      "name": "Marcus Poehls",
-      "email": "marcus@futurestud.io"
-    }
-  ],
   "dependencies": {
     "lodash": "~4.17.15"
   },
@@ -43,6 +37,7 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/futurestudio/hapi-request-utilities.git"

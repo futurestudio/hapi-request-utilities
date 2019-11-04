@@ -17,10 +17,14 @@ experiment('hapi-request-utilities plugin', () => {
       plugin: require('../lib/index')
     })
 
-    server.auth.scheme('succeeding', function (_, options) {
+    server.auth.scheme('succeeding', () => {
       return {
-        authenticate (_, h) {
-          return h.authenticated({ credentials: options.user })
+        authenticate (request, h) {
+          if (request.auth.mode === 'try') {
+            return h.unauthenticated(new Error('missing credentials'))
+          }
+
+          return h.authenticated({ credentials: { name: 'Marcus' } })
         }
       }
     })
@@ -621,9 +625,17 @@ experiment('hapi-request-utilities plugin', () => {
       path: '/',
       method: 'GET',
       options: {
-        auth: 'marcus',
+        auth: {
+          strategy: 'marcus',
+          mode: 'required'
+        },
         handler: request => request.user || {}
       }
+    })
+
+    server.ext('onPreAuth', (request, h) => {
+      expect(request.user).to.not.exist()
+      return h.continue
     })
 
     server.ext('onPostAuth', (request, h) => {
@@ -638,8 +650,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const request = {
       url: '/',
-      method: 'GET',
-      auth: { credentials: { name: 'Marcus' }, strategy: 'marcus' }
+      method: 'GET'
     }
 
     const response = await server.inject(request)

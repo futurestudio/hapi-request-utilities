@@ -19,7 +19,7 @@
   [![Greenkeeper badge](https://badges.greenkeeper.io/futurestudio/hapi-request-utilities.svg)](https://greenkeeper.io/)
     <a href="https://snyk.io/test/github/futurestudio/hapi-request-utilities"><img src="https://snyk.io/test/github/futurestudio/hapi-request-utilities/badge.svg" alt="Known Vulnerabilities"></a>
     <a href="https://www.npmjs.com/package/hapi-request-utilities"><img src="https://img.shields.io/npm/v/hapi-request-utilities.svg" alt="hapi-request-utilities Version"></a>
-    <a href="https://www.npmjs.com/package/hapi-request-utilities"><img src="https://img.shields.io/npm/dt/hapi-request-utilities.svg" alt="Total downloads"></a>
+    <a href="https://www.npmjs.com/package/hapi-request-utilities"><img src="https://img.shields.io/npm/dm/hapi-request-utilities.svg" alt="Monthly downloads"></a>
   </p>
   <p>
     <em>Follow <a href="http://twitter.com/marcuspoehls">@marcuspoehls</a> for updates!</em>

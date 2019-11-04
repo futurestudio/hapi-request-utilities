@@ -714,6 +714,14 @@ experiment('hapi-request-utilities plugin', () => {
   })
 
   it('request.root', async () => {
+    const url = 'http://localhost/users?name=Marcus'
+
+    server.ext('onRequest', (request, h) => {
+      request.setUrl(url)
+
+      return h.continue
+    })
+
     server.route({
       path: '/users',
       method: 'GET',
@@ -727,7 +735,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(response.result).to.equal(`http://${process.env['COMPUTERNAME'].toLowerCase()}`)
+    expect(response.result).to.equal('http://localhost')
   })
 
   it('request.uri', async () => {

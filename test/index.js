@@ -701,4 +701,71 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.statusCode).to.equal(200)
     expect(response.result).to.equal('12345')
   })
+
+  it('request.root', async () => {
+    server.route({
+      path: '/users',
+      method: 'GET',
+      handler: request => request.root()
+    })
+
+    const request = {
+      url: '/users',
+      method: 'GET'
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(`http://${process.env['COMPUTERNAME'].toLowerCase()}`)
+  })
+
+  it('request.uri', async () => {
+    const url = 'https://localhost/users?name=Marcus#hashtag'
+
+    server.ext('onRequest', (request, h) => {
+      request.setUrl(url)
+
+      return h.continue
+    })
+
+    server.route({
+      path: '/users',
+      method: 'GET',
+      handler: request => request.uri()
+    })
+
+    const request = {
+      url: '/users?name=Marcus',
+      method: 'GET'
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal('https://localhost/users')
+  })
+
+  it('request.fullUrl', async () => {
+    const url = 'http://localhost/users?name=Marcus#hashtag'
+
+    server.ext('onRequest', (request, h) => {
+      request.setUrl(url)
+
+      return h.continue
+    })
+
+    server.route({
+      path: '/users',
+      method: 'GET',
+      handler: request => request.fullUri() // request.fullUri is an alias for request.fullUrl -> testing both method calls here
+    })
+
+    const request = {
+      url: '/users?name=Marcus#hashtag',
+      method: 'GET'
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(url)
+  })
 })

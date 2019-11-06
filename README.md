@@ -69,7 +69,7 @@ await server.register({
 
 
 ## Methods
-Find all available `request` decorations in [the extensive documentation](https://superchargejs.com/docs/master/request).
+Find all available `request` decorations in [the extensive documentation](https://superchargejs.com/docs/master/requests).
 
 
 

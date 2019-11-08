@@ -4,6 +4,8 @@
 ## [3.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.2.0...v3.0.0) - 2019-11-xx
 
 ### Added
+- `request.missing(keys)` as the inverse of `request.has(keys)` to determine whether the request input contains all given keys
+  - Use it like this: `request.missing('email')` or `request.missing(['email', 'password'])`
 - `request.root()`: returns the requests’s root domain
   - For example, requesting `https://user:pass@example.com/posts?filter=withVideo` returns `https://example.com`.
 - `request.uri()`: returns the requests’s URL with path, without query strings
@@ -14,6 +16,11 @@
 
 ### Updated
 - bump dependencies
+- require hapi v18
+
+
+### Breaking Changes
+This release requires hapi v18. Hapi migrated the `request.url` property to a WHATWG URL and the new URL-related methods use the WHATWG URL instance.
 
 
 ## [2.2.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.1.1...v2.2.0) - 2019-10-17

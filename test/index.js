@@ -195,6 +195,77 @@ experiment('hapi-request-utilities plugin', () => {
     expect(result).to.equal(false)
   })
 
+  it('request.missing', async () => {
+    server.route({
+      path: '/single-key',
+      method: 'GET',
+      handler: request => {
+        return request.missing('name')
+      }
+    })
+
+    let request = {
+      url: '/single-key?name=marcus&developer=hapi',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result).to.equal(false)
+
+    request = {
+      url: '/single-key',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const { result, statusCode } = await server.inject(request)
+    expect(statusCode).to.equal(200)
+    expect(result).to.equal(true)
+
+    server.route({
+      path: '/multiple-keys-array',
+      method: 'GET',
+      handler: request => {
+        return request.missing(['name', 'developer'])
+      }
+    })
+
+    const multipleKeysRequest = {
+      url: '/multiple-keys-array?name=marcus&developer=hapi',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const multipleKeysResponse = await server.inject(multipleKeysRequest)
+    expect(multipleKeysResponse.statusCode).to.equal(200)
+    expect(multipleKeysResponse.result).to.equal(false)
+
+    server.route({
+      path: '/multiple-keys-spread',
+      method: 'GET',
+      handler: request => {
+        return request.missing('hapi', 'developer')
+      }
+    })
+
+    const spreadRequest = {
+      url: '/multiple-keys-spread?developer=hapi',
+      method: 'GET'
+    }
+
+    const spreadResponse = await server.inject(spreadRequest)
+    expect(spreadResponse.statusCode).to.equal(200)
+    expect(spreadResponse.result).to.equal(true)
+  })
+
   it('tests the request.filled decoration', async () => {
     server.route({
       path: '/',

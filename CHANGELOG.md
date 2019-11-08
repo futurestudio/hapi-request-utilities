@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [3.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.2.0...v3.0.0) - 2019-11-xx
+
+### Added
+- `request.root()`: returns the requests’s root domain
+  - For example, requesting `https://user:pass@example.com/posts?filter=withVideo` returns `https://example.com`.
+- `request.uri()`: returns the requests’s URL with path, without query strings
+  - For example, requesting `https://user:pass@example.com/posts?filter=withVideo` returns `https://example.com/posts`
+  - I couldn’t use `request.url()` because hapi provides a getter for `request.url`
+- `request.fullUrl()` (or aliased `request.fullUri()`): returns the requests’s full URL with query strings and hashes
+  - For example, requesting `https://user:pass@example.com/posts?filter=withVideo` returns `https://example.com/posts?filter=withVideo`.
+
+### Updated
+- bump dependencies
+
+
 ## [2.2.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.1.1...v2.2.0) - 2019-10-17
 
 ### Added

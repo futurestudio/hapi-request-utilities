@@ -784,8 +784,8 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal('12345')
   })
 
-  it('request.root', async () => {
-    const url = 'http://localhost/users?name=Marcus'
+  it('request.domain', async () => {
+    const url = 'http://user:pass@sub.localhost.com/users?name=Marcus'
 
     server.ext('onRequest', (request, h) => {
       request.setUrl(url)
@@ -806,7 +806,7 @@ experiment('hapi-request-utilities plugin', () => {
 
     const response = await server.inject(request)
     expect(response.statusCode).to.equal(200)
-    expect(response.result).to.equal('http://localhost')
+    expect(response.result).to.equal('http://sub.localhost.com')
   })
 
   it('request.uri', async () => {

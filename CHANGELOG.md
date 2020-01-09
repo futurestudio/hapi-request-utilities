@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [4.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v3.0.0...v4.0.0) - 2020-xx-xx
+
+### Breaking Changes
+- require hapi v19
+- require Node.js v12
+
+
 ## [3.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.2.0...v3.0.0) - 2019-11-15
 
 ### Added
@@ -19,7 +26,6 @@
 - require hapi v18
 
 ### Breaking Changes
-
 - require hapi v18
 
 This release requires hapi v18. Hapi migrated the `request.url` property to a WHATWG URL in v18. The new methods in `hapi-request-utilities` build on top of a WHATWG URL instance.

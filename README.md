@@ -40,19 +40,25 @@ Join the <a href="https://futurestud.io/university">Future Studio University and
 A hapi plugin that decorates the `request` with methods to quickly and conveniently access incoming data.
 
 
-### Requirements
-This plugin uses async/await which requires **Node.js v8 or newer**.
+## Requirements
+> **hapi v19 (or later)** and **Node.js v12 (or newer)**
+
+This plugin requires **hapi v19** (or later) and **Node.js v12 or newer**.
+
+
+### Compatibility
+| Major Release | [hapi.js](https://github.com/hapijs/hapi) version | Node.js version |
+| --- | --- | --- |
+| `v4` | `>=19 @hapi/hapi` | `>=12` |
+| `v3` | `>=18 hapi` | `>=8` |
+| `v2` | `>=17 hapi` | `>=8` |
 
 
 ## Installation
 Add `hapi-request-utilities` as a dependency to your project:
 
 ```bash
-# NPM 5: this way is yours
 npm i hapi-request-utilities
-
-# NPM 4:
-npm i -S hapi-request-utilities
 ```
 
 

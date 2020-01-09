@@ -43,7 +43,11 @@
     "url": "git+https://github.com/futurestudio/hapi-request-utilities.git"
   },
   "scripts": {
-    "prepush": "npm test",
     "test": "lab --assert @hapi/code --leaks --coverage --lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
   }
 }

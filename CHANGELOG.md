@@ -1,11 +1,11 @@
 # Changelog
 
 
-## [4.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v3.0.0...v4.0.0) - 2020-xx-xx
+## [4.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v3.0.0...v4.0.0) - 2020-01-10
 
 ### Breaking Changes
-- require hapi v19
 - require Node.js v12
+  - this change aligns with the hapi ecosystem requiring Node.js v12 with the release of hapi 19
 
 
 ## [3.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v2.2.0...v3.0.0) - 2019-11-15

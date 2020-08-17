@@ -5,6 +5,16 @@
 
 ### Added
 - add full TypeScript definitions for all request utility methods
+- add support to check multiple keys as separate strings without using an array on
+  - `only`, `except`, `has`, `filled`, `missing`
+  ```js
+  // before: use an array when checking multiple values
+  request.has(['email', 'password'])
+
+  // now: use array or individual strings, both are supported
+  request.has('email', 'password')
+  request.has(['email', 'password'])
+  ```
 
 ### Updated
 - test Node.js v14

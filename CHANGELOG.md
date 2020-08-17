@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [4.1.1](https://github.com/futurestudio/hapi-request-utilities/compare/v4.1.0...v4.1.1) - 2020-08-17
+
+### Updated
+- removed badge link in Readme
+
+
 ## [4.1.0](https://github.com/futurestudio/hapi-request-utilities/compare/v4.0.0...v4.1.0) - 2020-08-17
 
 ### Added

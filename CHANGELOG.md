@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [4.1.0](https://github.com/futurestudio/hapi-request-utilities/compare/v4.0.0...v4.1.0) - 2020-08-17
+
+### Added
+- add full TypeScript definitions for all request utility methods
+
+### Updated
+- test Node.js v14
+- bump dependencies
+- move TypeScript definitions to `typings` directory
+
+
 ## [4.0.0](https://github.com/futurestudio/hapi-request-utilities/compare/v3.0.0...v4.0.0) - 2020-01-10
 
 ### Breaking Changes

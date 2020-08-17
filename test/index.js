@@ -4,7 +4,7 @@ const Lab = require('@hapi/lab')
 const Hapi = require('@hapi/hapi')
 const { expect } = require('@hapi/code')
 
-let server
+let server = new Hapi.Server()
 
 const { experiment, it, beforeEach } = (exports.lab = Lab.script())
 
@@ -32,7 +32,7 @@ experiment('hapi-request-utilities plugin', () => {
     server.auth.strategy('marcus', 'succeeding')
   })
 
-  it('tests the request.all decoration', async () => {
+  it('request.all', async () => {
     server.route({
       path: '/',
       method: 'POST',
@@ -57,7 +57,7 @@ experiment('hapi-request-utilities plugin', () => {
     })
   })
 
-  it('tests the request.all decoration and query takes priority', async () => {
+  it('request.all decoration and query takes priority', async () => {
     server.route({
       path: '/',
       method: 'POST',
@@ -83,7 +83,7 @@ experiment('hapi-request-utilities plugin', () => {
     })
   })
 
-  it('tests the request.only decoration', async () => {
+  it('request.only', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -105,7 +105,30 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result.name).to.equal('marcus')
   })
 
-  it('tests the request.only decoration with string as key (not array of strings)', async () => {
+  it('request.only with multiple params', async () => {
+    server.route({
+      path: '/',
+      method: 'GET',
+      handler: request => {
+        return request.only('name', 'developer')
+      }
+    })
+
+    const request = {
+      url: '/?name=marcus&developer=hapi',
+      method: 'GET',
+      payload: {
+        isHapiPassionate: true
+      }
+    }
+
+    const response = await server.inject(request)
+    expect(response.statusCode).to.equal(200)
+    expect(response.result.name).to.equal('marcus')
+    expect(response.result.developer).to.equal('hapi')
+  })
+
+  it('request.only decoration with string as key (not array of strings)', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -127,7 +150,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result.name).to.equal('marcus')
   })
 
-  it('tests the request.has decoration', async () => {
+  it('request.has', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -161,7 +184,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(result).to.equal(false)
   })
 
-  it('tests the request.has decoration with string as key (not array of strings)', async () => {
+  it('request.has decoration with string as key (not array of strings)', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -266,7 +289,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(spreadResponse.result).to.equal(true)
   })
 
-  it('tests the request.filled decoration', async () => {
+  it('request.filled', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -301,7 +324,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(result).to.equal(false)
   })
 
-  it('tests the request.filled decoration with string as key (not array of strings)', async () => {
+  it('request.filled decoration with string as key (not array of strings)', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -335,7 +358,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(result).to.equal(false)
   })
 
-  it('tests the request.except decoration', async () => {
+  it('request.except', async () => {
     server.route({
       path: '/',
       method: 'POST',
@@ -360,7 +383,7 @@ experiment('hapi-request-utilities plugin', () => {
     })
   })
 
-  it('tests the request.except decoration with string as key (not array of strings)', async () => {
+  it('request.except decoration with string as key (not array of strings)', async () => {
     server.route({
       path: '/',
       method: 'POST',
@@ -385,7 +408,7 @@ experiment('hapi-request-utilities plugin', () => {
     })
   })
 
-  it('test the request.header decoration', async () => {
+  it('test the request.header', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -407,7 +430,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.payload).to.equal('hapi-request-utilities')
   })
 
-  it('test the request.hasHeader decoration', async () => {
+  it('test the request.hasHeader', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -439,7 +462,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal(false)
   })
 
-  it('test the request.isJson decoration', async () => {
+  it('test the request.isJson', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -471,7 +494,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal(false)
   })
 
-  it('test the request.wantsJson decoration', async () => {
+  it('test the request.wantsJson', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -503,7 +526,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal(false)
   })
 
-  it('test the request.wantsHtml decoration', async () => {
+  it('test the request.wantsHtml', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -535,7 +558,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal(false)
   })
 
-  it('test the request.cookie decoration', async () => {
+  it('test the request.cookie', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -567,7 +590,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.payload).to.equal('empty')
   })
 
-  it('test the request.cookies decoration', async () => {
+  it('test the request.cookies', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -602,7 +625,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal({})
   })
 
-  it('test the request.hasCookie decoration', async () => {
+  it('test the request.hasCookie', async () => {
     server.route({
       path: '/',
       method: 'GET',
@@ -729,7 +752,7 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.result).to.equal({ name: 'Marcus' })
   })
 
-  it('tests the request.isAuthenticated() decoration', async () => {
+  it('request.isAuthenticated()', async () => {
     server.route({
       path: '/',
       method: 'GET',

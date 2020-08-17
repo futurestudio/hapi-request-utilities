@@ -7,6 +7,7 @@
     "url": "https://github.com/futurestudio/hapi-request-utilities/issues"
   },
   "dependencies": {
+    "@supercharge/request-ip": "~1.1.1",
     "lodash": "~4.17.20"
   },
   "devDependencies": {

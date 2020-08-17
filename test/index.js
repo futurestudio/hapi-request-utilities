@@ -881,4 +881,29 @@ experiment('hapi-request-utilities plugin', () => {
     expect(response.statusCode).to.equal(200)
     expect(response.result).to.equal(url)
   })
+
+  it('request.ip()', async () => {
+    server.route({
+      path: '/ip',
+      method: 'GET',
+      handler: request => {
+        return request.ip() || 'default-ip'
+      }
+    })
+
+    const request = {
+      url: '/ip',
+      method: 'GET'
+    }
+
+    const response = await server.inject(request)
+    expect(response.result).to.equal('127.0.0.1')
+
+    const { result: ip } = await server.inject({
+      url: '/ip',
+      method: 'GET',
+      headers: { 'x-forwarded-for': 'unknown, 1.2.3.4' }
+    })
+    expect(ip).to.equal('1.2.3.4')
+  })
 })

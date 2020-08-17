@@ -130,6 +130,11 @@ declare module '@hapi/hapi' {
        * Alias for `request.fullUrl` to comply with the available `request.uri` method.
        */
       fullUri (): string
+
+      /**
+       * Returns the client’s IP address.
+       */
+      ip (): string | undefined
     }
 }
 

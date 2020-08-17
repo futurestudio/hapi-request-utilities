@@ -4,6 +4,7 @@
 ## [4.1.0](https://github.com/futurestudio/hapi-request-utilities/compare/v4.0.0...v4.1.0) - 2020-08-17
 
 ### Added
+- `request.ip()` method retrieving the client’s IP address
 - add full TypeScript definitions for all request utility methods
 - add support to check multiple keys as separate strings without using an array on
   - `only`, `except`, `has`, `filled`, `missing`
